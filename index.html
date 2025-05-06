@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Modern Website</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">JustKicks</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#products">Products</a>
+        <a href="#story">Story</a>
+        <a href="#features">Features</a>
+        <a href="#newsletter">Subscribe</a>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Just Kicks</h1>
+      <p>"Just Kicks — Where Style Meets Comfort."</p>
+      <button class="btn">Explore Now</button>
+    </section>
+
+    <!-- Product Section -->
+    <section class="section" id="products">
+      <div class="section-header">
+        <h2>Our Products</h2>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <img
+            src="https://source.unsplash.com/400x300/?tech"
+            alt="Tech Product"
+          />
+          <h3>Air Jordan Retro 10</h3>
+        </div>
+        <div class="product-card">
+          <img src="https://source.unsplash.com/400x300/?gadget" alt="Gadget" />
+          <h3>Nike Air Max</h3>
+        </div>
+        <div class="product-card">
+          <img src="https://source.unsplash.com/400x300/?device" alt="Device" />
+          <h3>Nike Air Jordan</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="section" id="story">
+      <div class="section-header">
+        <h2>Our Story</h2>
+      </div>
+      <div class="story-content">
+        <img src="https://source.unsplash.com/500x400/?team,work" alt="Team" />
+        <p>
+          At Just Kicks, we believe shoes are more than just something you wear
+          — they tell a story. What started as a small dream in a local garage
+          quickly turned into a movement for sneaker lovers, by sneaker lovers.
+          Our passion for stylish, comfortable, and high-quality footwear drives
+          everything we do. From limited-edition drops to everyday classics,
+          we’ve got your soles covered. Whether you're walking the streets,
+          hitting the court, or just kicking it — Just Kicks is here to step
+          with you.
+        </p>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+      <div class="section-header">
+        <h2>Why Choose Us?</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h3>Exclusive Sneaker Collections</h3>
+          <p>
+            We offer handpicked, limited-edition, and trending kicks you won’t
+            find just anywhere — perfect for collectors and everyday wearers
+            alike.
+          </p>
+        </div>
+        <div class="feature-item">
+          <h3>Unmatched Comfort & Quality</h3>
+          <p>
+            Every pair is tested for style, durability, and all-day comfort.
+            Your feet deserve the best, and we make sure they get it.
+          </p>
+        </div>
+        <div class="feature-item">
+          <h3>Customer-First Experience</h3>
+          <p>
+            From easy ordering to fast delivery and responsive support, we make
+            sure your shopping experience is as smooth as your new kicks.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section" id="newsletter">
+      <div class="section-header">
+        <h2>Subscribe to Our Newsletter</h2>
+      </div>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 MySite. All rights reserved.</p>
+    </footer>
+
+    <!-- Hamburger Script -->
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
