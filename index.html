@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Modern Website</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <!-- Navbar -->
@@ -16,7 +20,12 @@
         <a href="#story">Story</a>
         <a href="#features">Features</a>
         <a href="#newsletter">Subscribe</a>
+        <a href="login.html" class="login-icon">
+          <i class="fas fa-user"></i>
+          <span>Login</span>
+        </a>
       </div>
+
       <div class="hamburger">
         <span></span>
         <span></span>
@@ -31,37 +40,98 @@
       <button class="btn">Explore Now</button>
     </section>
 
-    <!-- Product Section -->
-    <section class="section" id="products">
+    <section class="section" id="services">
       <div class="section-header">
-        <h2>Our Products</h2>
+        <h2>Our Services</h2>
+        <p>What makes us different</p>
       </div>
-      <div class="product-grid">
-        <div class="product-card">
-          <img
-            src="https://source.unsplash.com/400x300/?tech"
-            alt="Tech Product"
-          />
-          <h3>Air Jordan Retro 10</h3>
+      <div class="services-container">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <h3>Free Shipping</h3>
+          <p>Free shipping on all orders over $100</p>
         </div>
-        <div class="product-card">
-          <img src="https://source.unsplash.com/400x300/?gadget" alt="Gadget" />
-          <h3>Nike Air Max</h3>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fas fa-undo"></i>
+          </div>
+          <h3>Easy Returns</h3>
+          <p>30-day hassle-free return policy</p>
         </div>
-        <div class="product-card">
-          <img src="https://source.unsplash.com/400x300/?device" alt="Device" />
-          <h3>Nike Air Jordan</h3>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>Authenticity Guaranteed</h3>
+          <p>All products are 100% authentic</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3>24/7 Support</h3>
+          <p>Customer service available anytime</p>
         </div>
       </div>
     </section>
 
+    <div class="product">
+      <section class="section" id="products">
+        <div class="section-header">
+          <h2>Our Products</h2>
+          <p>See what we have in store for you</p>
+        </div>
+        <div class="carousel-container">
+          <div id="carouselTrack" class="product-grid">
+            <div class="product-card">
+              <img src="Retro 10.jpg" alt="Retro 10" />
+              <h3>Air Jordan Retro 10</h3>
+            </div>
+            <div class="product-card">
+              <img src="nike air max.jpg" alt="Nike Air Max" />
+              <h3>Nike Air Max</h3>
+            </div>
+            <div class="product-card">
+              <img src="nike air jordan.jpg" alt="Nike Air Jordan" />
+              <h3>Nike Air Jordan</h3>
+            </div>
+            <!-- Add more product cards if needed -->
+            <div class="product-card">
+              <img src="nike dunk.jpg" alt="Nike Dunk" />
+              <h3>Nike Dunk</h3>
+            </div>
+            <div class="product-card">
+              <img src="ultraboost.jpg" alt="Adidas Ultraboost" />
+              <h3>Adidas Ultraboost</h3>
+            </div>
+            <div class="product-card">
+              <img src="550.jpg" alt="New Balance" />
+              <h3>New Balance 550</h3>
+            </div>
+          </div>
+          <div class="carousel-nav">
+            <button class="carousel-arrow left">←</button>
+            <button class="carousel-arrow right">→</button>
+          </div>
+          <!-- Added pagination dots for mobile -->
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+        <button class="view-all-btn">VIEW ALL</button>
+        <script src="carousel.js"></script>
+      </section>
+    </div>
     <!-- Story Section -->
     <section class="section" id="story">
       <div class="section-header">
         <h2>Our Story</h2>
       </div>
       <div class="story-content">
-        <img src="https://source.unsplash.com/500x400/?team,work" alt="Team" />
+        <img src="Story.jpg" alt="Team" />
         <p>
           At Just Kicks, we believe shoes are more than just something you wear
           — they tell a story. What started as a small dream in a local garage
@@ -119,7 +189,7 @@
 
     <!-- Footer -->
     <footer>
-      <p>&copy; 2025 MySite. All rights reserved.</p>
+      <p>&copy; 2025 JustKicks. All rights reserved.</p>
     </footer>
 
     <!-- Hamburger Script -->
