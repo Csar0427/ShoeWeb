@@ -13,23 +13,47 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar">
-      <div class="logo">JustKicks</div>
-      <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#products">Products</a>
-        <a href="#story">Story</a>
-        <a href="#features">Features</a>
-        <a href="#newsletter">Subscribe</a>
-        <a href="login.html" class="login-icon">
-          <i class="fas fa-user"></i>
-          <span>Login</span>
-        </a>
-      </div>
+      <div class="navbar-container">
+        <div class="logo">
+          <a href="#">JustKicks</a>
+        </div>
 
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+        <div class="nav-links" id="navLinks">
+          <a href="#" class="nav-link active" data-section="home">Home</a>
+          <a href="#products" class="nav-link" data-section="products"
+            >Products</a
+          >
+          <a href="#story" class="nav-link" data-section="story">Story</a>
+          <a href="#features" class="nav-link" data-section="features"
+            >Features</a
+          >
+          <a href="#newsletter" class="nav-link" data-section="newsletter"
+            >Subscribe</a
+          >
+          <a href="login.html" class="login-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Login</span>
+          </a>
+        </div>
+
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </nav>
 
@@ -89,38 +113,126 @@
         <div class="carousel-container">
           <div id="carouselTrack" class="product-grid">
             <div class="product-card">
-              <img src="Retro 10.jpg" alt="Retro 10" />
-              <h3>Air Jordan Retro 10</h3>
+              <div class="product-image">
+                <img src="Retro 10.jpg" alt="Retro 10" />
+                <div class="product-overlay">
+                  <span class="category-tag">Basketball</span>
+                  <button class="quick-view-btn">Quick View</button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3>Air Jordan Retro 10</h3>
+                <p class="product-price">$190</p>
+              </div>
             </div>
+
             <div class="product-card">
-              <img src="nike air max.jpg" alt="Nike Air Max" />
-              <h3>Nike Air Max</h3>
+              <div class="product-image">
+                <img src="nike air max.jpg" alt="Nike Air Max" />
+                <div class="product-overlay">
+                  <span class="category-tag">Lifestyle</span>
+                  <button class="quick-view-btn">Quick View</button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3>Nike Air Max</h3>
+                <p class="product-price">$150</p>
+              </div>
             </div>
+
             <div class="product-card">
-              <img src="nike air jordan.jpg" alt="Nike Air Jordan" />
-              <h3>Nike Air Jordan</h3>
+              <div class="product-image">
+                <img src="nike air jordan.jpg" alt="Nike Air Jordan" />
+                <div class="product-overlay">
+                  <span class="category-tag">Basketball</span>
+                  <button class="quick-view-btn">Quick View</button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3>Nike Air Jordan</h3>
+                <p class="product-price">$180</p>
+              </div>
             </div>
-            <!-- Add more product cards if needed -->
+
             <div class="product-card">
-              <img src="nike dunk.jpg" alt="Nike Dunk" />
-              <h3>Nike Dunk</h3>
+              <div class="product-image">
+                <img src="nike dunk.jpg" alt="Nike Dunk" />
+                <div class="product-overlay">
+                  <span class="category-tag">Skateboarding</span>
+                  <button class="quick-view-btn">Quick View</button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3>Nike Dunk</h3>
+                <p class="product-price">$120</p>
+              </div>
             </div>
+
             <div class="product-card">
-              <img src="ultraboost.jpg" alt="Adidas Ultraboost" />
-              <h3>Adidas Ultraboost</h3>
+              <div class="product-image">
+                <img src="ultraboost.jpg" alt="Adidas Ultraboost" />
+                <div class="product-overlay">
+                  <span class="category-tag">Running</span>
+                  <button class="quick-view-btn">Quick View</button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3>Adidas Ultraboost</h3>
+                <p class="product-price">$160</p>
+              </div>
             </div>
+
             <div class="product-card">
-              <img src="550.jpg" alt="New Balance" />
-              <h3>New Balance 550</h3>
+              <div class="product-image">
+                <img src="550.jpg" alt="New Balance" />
+                <div class="product-overlay">
+                  <span class="category-tag">Lifestyle</span>
+                  <button class="quick-view-btn">Quick View</button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3>New Balance 550</h3>
+                <p class="product-price">$110</p>
+              </div>
             </div>
           </div>
+
           <div class="carousel-nav">
-            <button class="carousel-arrow left">←</button>
-            <button class="carousel-arrow right">→</button>
+            <button class="carousel-arrow left">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="carousel-arrow right">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
           </div>
-          <!-- Added pagination dots for mobile -->
+
           <div class="carousel-dots" id="carouselDots"></div>
         </div>
+
         <button class="view-all-btn">VIEW ALL</button>
         <script src="carousel.js"></script>
       </section>
