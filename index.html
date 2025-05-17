@@ -91,16 +91,42 @@
         </div>
       </div>
     </nav>
-    <script>
-      function checkLoginStatus() {
-        const loggedInUser = localStorage.getItem("loggedInUser");
-        const userDisplay = document.getElementById("userDisplay");
-        const logoutBtn = document.getElementById("logoutBtn");
-        const loginLink = document.getElementById("loginLink");
+    <script type="module">
+      import { auth, onAuthStateChanged, signOut } from "./firebase.js";
+      import {
+        getDatabase,
+        ref,
+        get,
+      } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-        if (loggedInUser) {
-          userDisplay.textContent = `Hello, ${loggedInUser}`;
-          userDisplay.style.display = "inline";
+      const userDisplay = document.getElementById("userDisplay");
+      const logoutBtn = document.getElementById("logoutBtn");
+      const loginLink = document.getElementById("loginLink");
+      const database = getDatabase();
+
+      function updateAuthUI(user) {
+        if (user) {
+          get(ref(database, "users/" + user.uid + "/username"))
+            .then((snapshot) => {
+              if (snapshot.exists()) {
+                const username = snapshot.val();
+                userDisplay.textContent = `Hello, ${username}`;
+                userDisplay.style.display = "inline";
+              } else {
+                // Fallback to displayName if username isn't explicitly saved
+                userDisplay.textContent = `Hello, ${
+                  user.displayName || user.email
+                }`;
+                userDisplay.style.display = "inline";
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching username:", error);
+              userDisplay.textContent = `Hello, ${
+                user.displayName || user.email
+              }`;
+              userDisplay.style.display = "inline";
+            });
           logoutBtn.style.display = "inline";
           loginLink.style.display = "none";
         } else {
@@ -110,14 +136,18 @@
         }
       }
 
-      document
-        .getElementById("logoutBtn")
-        .addEventListener("click", function () {
-          localStorage.removeItem("loggedInUser");
-          window.location.href = "login.html";
-        });
+      onAuthStateChanged(auth, (user) => {
+        updateAuthUI(user);
+      });
 
-      window.onload = checkLoginStatus;
+      logoutBtn.addEventListener("click", async () => {
+        try {
+          await signOut(auth);
+          console.log("User signed out");
+        } catch (error) {
+          console.error("Error signing out:", error);
+        }
+      });
     </script>
     <section class="hero">
       <h1>Just Kicks</h1>

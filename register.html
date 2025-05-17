@@ -42,32 +42,52 @@
       </p>
     </div>
 
-    <script>
-      const registerForm = document.getElementById("registerForm");
+    <script type="module">
+      import {
+        auth,
+        createUserWithEmailAndPassword,
+        getDatabase,
+        ref,
+        set,
+      } from "./firebase.js";
 
-      registerForm.addEventListener("submit", function (e) {
+      const registerForm = document.getElementById("registerForm");
+      const database = getDatabase();
+
+      registerForm.addEventListener("submit", async function (e) {
         e.preventDefault();
 
         const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
-        if (!username || !password) {
-          alert("Please enter username and password.");
+        if (!username || !email || !password) {
+          alert("Please enter username, email, and password.");
           return;
         }
 
-        let users = JSON.parse(localStorage.getItem("users")) || {};
+        try {
+          const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+          const user = userCredential.user;
 
-        if (users[username]) {
-          alert("Username already exists, choose another.");
-          return;
+          // Write user data to the Realtime Database
+          await set(ref(database, "users/" + user.uid), {
+            username: username,
+            email: email,
+          });
+
+          alert("Registration successful! Redirecting to login...");
+          window.location.href = "login.html";
+        } catch (error) {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(`Registration failed: ${errorMessage} (${errorCode})`);
+          console.error("Registration error:", error);
         }
-
-        users[username] = { password: password };
-        localStorage.setItem("users", JSON.stringify(users));
-
-        alert("Registration successful! Redirecting to login...");
-        window.location.href = "login.html";
       });
     </script>
   </body>
