@@ -22,6 +22,7 @@ img {
 
 /* NAVBAR */
 /* Modern Navbar Styles */
+/* Base Navbar Styles */
 .navbar {
   background-color: #1a1d24;
   color: white;
@@ -45,16 +46,15 @@ img {
 .logo a {
   font-size: 1.6rem;
   font-weight: 700;
-  color: white;
   text-decoration: none;
   letter-spacing: 0.5px;
-  position: relative;
   background: linear-gradient(90deg, #fff, #f0f0f0);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
+/* Desktop Nav Links */
 .nav-links {
   display: flex;
   align-items: center;
@@ -86,7 +86,8 @@ img {
   color: white;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 100%;
 }
 
@@ -94,11 +95,7 @@ img {
   color: white;
 }
 
-.nav-link.active::after {
-  width: 100%;
-  background-color: #3b82f6;
-}
-
+/* Login Button */
 .login-btn {
   display: flex;
   align-items: center;
@@ -120,13 +117,14 @@ img {
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
+/* Hamburger Icon */
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 6px;
   padding: 10px;
-  z-index: 1000;
+  z-index: 1001;
 }
 
 .hamburger span {
@@ -137,7 +135,18 @@ img {
   transition: all 0.3s ease;
 }
 
-/* Responsive styles */
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Responsive Styles */
 @media (max-width: 900px) {
   .hamburger {
     display: flex;
@@ -168,19 +177,6 @@ img {
     width: 100%;
     justify-content: center;
     margin-top: 1rem;
-  }
-
-  /* Hamburger animation */
-  .hamburger.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
   }
 }
 
@@ -319,42 +315,21 @@ footer {
 }
 
 /* ----------- MEDIA QUERIES ----------- */
-@media (max-width: 768px) {
-  .navbar .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    background: #26272d;
-    flex-direction: column;
-    width: 100%;
-    display: none;
-    text-align: center;
-    padding: 1rem 0;
-  }
 
-  .navbar .nav-links.active {
-    display: flex;
-  }
+.hero h1 {
+  font-size: 2rem;
+}
 
-  .navbar .hamburger {
-    display: flex;
-  }
+.hero p {
+  font-size: 1rem;
+}
 
-  .hero h1 {
-    font-size: 2rem;
-  }
+.section-header h2 {
+  font-size: 1.75rem;
+}
 
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .section-header h2 {
-    font-size: 1.75rem;
-  }
-
-  .story-content {
-    flex-direction: column;
-  }
+.story-content {
+  flex-direction: column;
 }
 
 @media (max-width: 480px) {

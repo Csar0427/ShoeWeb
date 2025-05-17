@@ -10,8 +10,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
+
   <body>
-    <!-- Navbar -->
     <nav class="navbar">
       <div class="navbar-container">
         <div class="logo">
@@ -30,23 +30,58 @@
           <a href="#newsletter" class="nav-link" data-section="newsletter"
             >Subscribe</a
           >
-          <a href="login.html" class="login-btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+          <div id="authLinks">
+            <span
+              id="userDisplay"
+              style="display: none; margin-right: 15px"
+            ></span>
+            <button
+              id="logoutBtn"
+              style="
+                display: none;
+                background: none;
+                border: none;
+                color: #fff;
+                cursor: pointer;
+                padding: 0;
+                margin-right: 10px;
+              "
             >
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span>Login</span>
-          </a>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="13" y2="12"></line>
+              </svg>
+              <span>Logout</span>
+            </button>
+            <a href="login.html" class="login-btn" id="loginLink">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Login</span>
+            </a>
+          </div>
         </div>
 
         <div class="hamburger" id="hamburger">
@@ -56,8 +91,34 @@
         </div>
       </div>
     </nav>
+    <script>
+      function checkLoginStatus() {
+        const loggedInUser = localStorage.getItem("loggedInUser");
+        const userDisplay = document.getElementById("userDisplay");
+        const logoutBtn = document.getElementById("logoutBtn");
+        const loginLink = document.getElementById("loginLink");
 
-    <!-- Hero Section -->
+        if (loggedInUser) {
+          userDisplay.textContent = `Hello, ${loggedInUser}`;
+          userDisplay.style.display = "inline";
+          logoutBtn.style.display = "inline";
+          loginLink.style.display = "none";
+        } else {
+          userDisplay.style.display = "none";
+          logoutBtn.style.display = "none";
+          loginLink.style.display = "inline";
+        }
+      }
+
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", function () {
+          localStorage.removeItem("loggedInUser");
+          window.location.href = "login.html";
+        });
+
+      window.onload = checkLoginStatus;
+    </script>
     <section class="hero">
       <h1>Just Kicks</h1>
       <p>"Just Kicks — Where Style Meets Comfort."</p>
@@ -237,7 +298,6 @@
         <script src="carousel.js"></script>
       </section>
     </div>
-    <!-- Story Section -->
     <section class="section" id="story">
       <div class="section-header">
         <h2>Our Story</h2>
@@ -257,7 +317,6 @@
       </div>
     </section>
 
-    <!-- Features Section -->
     <section class="section" id="features">
       <div class="section-header">
         <h2>Why Choose Us?</h2>
@@ -288,18 +347,25 @@
       </div>
     </section>
 
-    <!-- Footer -->
     <footer>
       <p>&copy; 2025 JustKicks. All rights reserved.</p>
     </footer>
 
-    <!-- Hamburger Script -->
     <script>
-      const hamburger = document.querySelector(".hamburger");
-      const navLinks = document.querySelector(".nav-links");
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("navLinks");
+      const navLinkItems = document.querySelectorAll(".nav-link");
 
       hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
         navLinks.classList.toggle("active");
+      });
+
+      navLinkItems.forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
       });
     </script>
   </body>
