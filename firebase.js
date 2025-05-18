@@ -12,9 +12,9 @@ import {
   getDatabase,
   ref,
   set,
-  onValue, // Added onValue for real-time updates
-  push, // Added push for adding new swap listings
-  serverTimestamp, // Added serverTimestamp for timestamps
+  onValue,
+  push,
+  serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 import {
   getStorage,
@@ -40,7 +40,7 @@ const storage = getStorage(app);
 
 export {
   auth,
-  database,
+  database, // ✅ Exported database instead of getDatabase
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
@@ -49,9 +49,9 @@ export {
   signInWithPopup,
   ref,
   set,
-  onValue, // Exported onValue
-  push, // Exported push
-  serverTimestamp, // Exported serverTimestamp
+  onValue,
+  push,
+  serverTimestamp,
   storage,
   storageRef,
   uploadBytes,
