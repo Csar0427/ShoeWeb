@@ -79,10 +79,14 @@
         signInWithPopup,
         GoogleAuthProvider,
         signInWithEmailAndPassword,
+        getDatabase,
+        ref,
+        set,
       } from "./firebase.js";
 
       const loginForm = document.getElementById("loginForm");
       const googleSignInBtn = document.getElementById("googleSignInBtn");
+      const database = getDatabase();
 
       loginForm.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -114,17 +118,24 @@
 
         try {
           const result = await signInWithPopup(auth, provider);
-          console.log("Google Sign-in successful!", result);
           const user = result.user;
 
+          // Save user info to Realtime Database
+          await set(ref(database, "users/" + user.uid), {
+            uid: user.uid,
+            name: user.displayName,
+            email: user.email,
+            profile_picture: user.photoURL,
+            provider: "google",
+          });
+
+          console.log("Google Sign-in successful! User data saved.");
           localStorage.setItem("loggedInUser", user.displayName || user.email);
           alert("Google Sign-in successful! Redirecting to homepage...");
           window.location.href = "index.html";
         } catch (error) {
           console.error("Google Sign-in error:", error);
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert("Google Sign-in failed: " + errorMessage);
+          alert("Google Sign-in failed: " + error.message);
         }
       });
     </script>

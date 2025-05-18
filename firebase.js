@@ -1,4 +1,3 @@
-// firebase.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
   getAuth,
@@ -13,37 +12,48 @@ import {
   getDatabase,
   ref,
   set,
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js"; // Import database functions
+  onValue, // Added onValue for real-time updates
+  push, // Added push for adding new swap listings
+  serverTimestamp, // Added serverTimestamp for timestamps
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import {
+  getStorage,
+  ref as storageRef,
+  uploadBytes,
+  getDownloadURL,
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC5C4F0QeOTx88XxBYRKNdqAS3TaUIEJKg",
-
   authDomain: "justkick-a1e17.firebaseapp.com",
-
   projectId: "justkick-a1e17",
-
-  storageBucket: "justkick-a1e17.firebasestorage.app",
-
+  storageBucket: "justkick-a1e17.appspot.com",
   messagingSenderId: "958410816861",
-
   appId: "1:958410816861:web:2a9fd16973bd1652383cb4",
-
   measurementId: "G-2KRH67SKR9",
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const database = getDatabase(app); // Initialize the database
+const database = getDatabase(app);
+const storage = getStorage(app);
 
 export {
   auth,
+  database,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
   GoogleAuthProvider,
   signInWithPopup,
-  getDatabase, // Export database functions
   ref,
   set,
+  onValue, // Exported onValue
+  push, // Exported push
+  serverTimestamp, // Exported serverTimestamp
+  storage,
+  storageRef,
+  uploadBytes,
+  getDownloadURL,
 };

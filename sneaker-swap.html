@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sneaker Swap</title>
     <link rel="stylesheet" href="sneaker-swap.css" />
   </head>
@@ -13,80 +13,7 @@
 
       <section class="swap-listings">
         <h2>Available Swaps</h2>
-
-        <div class="swap-list">
-          <!-- Swap Item 1 -->
-          <div class="swap-item">
-            <div class="swap-offer">
-              <img
-                src="https://placeholder.svg?height=120&width=120"
-                alt="Jordan 1 Bred"
-              />
-              <div class="sneaker-info">
-                <h3>Jordan 1 Bred</h3>
-                <p>Size: US 10</p>
-                <p>Condition: 9/10</p>
-              </div>
-            </div>
-            <div class="swap-arrow">→</div>
-            <div class="swap-wanted">
-              <h4>Looking For:</h4>
-              <ul>
-                <li>Yeezy 350 Zebra (Size 10)</li>
-                <li>Dunk Low Panda (Size 10)</li>
-              </ul>
-              <button class="btn">Contact</button>
-            </div>
-          </div>
-
-          <!-- Swap Item 2 -->
-          <div class="swap-item">
-            <div class="swap-offer">
-              <img
-                src="https://placeholder.svg?height=120&width=120"
-                alt="Yeezy 350 Zebra"
-              />
-              <div class="sneaker-info">
-                <h3>Yeezy 350 Zebra</h3>
-                <p>Size: US 9.5</p>
-                <p>Condition: Deadstock</p>
-              </div>
-            </div>
-            <div class="swap-arrow">→</div>
-            <div class="swap-wanted">
-              <h4>Looking For:</h4>
-              <ul>
-                <li>Jordan 4 Military Black (Size 9.5)</li>
-                <li>Jordan 1 Chicago (Size 9.5)</li>
-              </ul>
-              <button class="btn">Contact</button>
-            </div>
-          </div>
-
-          <!-- Swap Item 3 -->
-          <div class="swap-item">
-            <div class="swap-offer">
-              <img
-                src="https://placeholder.svg?height=120&width=120"
-                alt="Nike Dunk Low Panda"
-              />
-              <div class="sneaker-info">
-                <h3>Nike Dunk Low Panda</h3>
-                <p>Size: US 8</p>
-                <p>Condition: 8/10</p>
-              </div>
-            </div>
-            <div class="swap-arrow">→</div>
-            <div class="swap-wanted">
-              <h4>Looking For:</h4>
-              <ul>
-                <li>Any Jordan 1 High (Size 8)</li>
-                <li>Nike SB Dunks (Size 8)</li>
-              </ul>
-              <button class="btn">Contact</button>
-            </div>
-          </div>
-        </div>
+        <div class="swap-list"></div>
       </section>
 
       <section class="create-swap">
@@ -96,40 +23,26 @@
             <h3>What You're Offering</h3>
             <div class="form-group">
               <label for="sneaker-name">Sneaker Name:</label>
-              <input
-                type="text"
-                id="sneaker-name"
-                placeholder="e.g. Jordan 1 Bred"
-                required
-              />
+              <input type="text" id="sneaker-name" required />
             </div>
             <div class="form-group">
               <label for="sneaker-size">Size (US):</label>
               <select id="sneaker-size" required>
                 <option value="">Select Size</option>
                 <option value="7">US 7</option>
-                <option value="7.5">US 7.5</option>
                 <option value="8">US 8</option>
-                <option value="8.5">US 8.5</option>
                 <option value="9">US 9</option>
-                <option value="9.5">US 9.5</option>
                 <option value="10">US 10</option>
-                <option value="10.5">US 10.5</option>
                 <option value="11">US 11</option>
-                <option value="11.5">US 11.5</option>
-                <option value="12">US 12</option>
-                <option value="13">US 13</option>
               </select>
             </div>
             <div class="form-group">
               <label for="sneaker-condition">Condition:</label>
               <select id="sneaker-condition" required>
                 <option value="">Select Condition</option>
-                <option value="deadstock">Deadstock (New)</option>
-                <option value="9-10">9/10 (Like New)</option>
-                <option value="8-9">8/10 (Light Wear)</option>
-                <option value="7-8">7/10 (Visible Wear)</option>
-                <option value="5-6">6/10 (Heavy Wear)</option>
+                <option value="Deadstock">Deadstock (New)</option>
+                <option value="9/10">9/10 (Like New)</option>
+                <option value="8/10">8/10 (Light Wear)</option>
               </select>
             </div>
           </div>
@@ -138,28 +51,20 @@
             <h3>What You're Looking For</h3>
             <div class="form-group">
               <label for="wanted-sneakers">Wanted Sneakers:</label>
-              <textarea
-                id="wanted-sneakers"
-                rows="3"
-                placeholder="List the sneakers you're looking for (include sizes if specific)"
-                required
-              ></textarea>
+              <textarea id="wanted-sneakers" rows="3" required></textarea>
             </div>
           </div>
 
           <div class="form-group">
             <label for="contact-info">Contact Info:</label>
-            <input
-              type="text"
-              id="contact-info"
-              placeholder="Email or Phone Number"
-              required
-            />
+            <input type="text" id="contact-info" required />
           </div>
 
           <button type="submit" class="btn submit-btn">Post Swap</button>
         </form>
       </section>
     </main>
+
+    <script type="module" src="firebaseswap.js"></script>
   </body>
 </html>
