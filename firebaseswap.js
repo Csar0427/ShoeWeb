@@ -1,3 +1,4 @@
+// firebaseswap.js
 import {
   auth,
   database,
@@ -5,16 +6,15 @@ import {
   push,
   onValue,
   serverTimestamp,
-  onAuthStateChanged,
-} from "./firebase.js"; // Assuming your firebase.js is in the same directory
+} from "./firebase.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const swapForm = document.querySelector(".swap-form");
   const swapListContainer = document.querySelector(".swap-list");
 
-  // Function to display existing swaps
+  // Display swaps
   const displaySwaps = (swaps) => {
-    swapListContainer.innerHTML = ""; // Clear previous listings
+    swapListContainer.innerHTML = "";
     if (swaps) {
       Object.entries(swaps).forEach(([swapId, swapData]) => {
         const swapDiv = document.createElement("div");
@@ -32,15 +32,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Listen for changes in the database to update the swap listings in real-time
+  // Load existing swaps
   const swapsRef = ref(database, "swaps");
   onValue(swapsRef, (snapshot) => {
     const swapsData = snapshot.val();
+    console.log("Loaded swaps:", swapsData); // Debug
     displaySwaps(swapsData);
   });
 
-  swapForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  // Handle form submission
+  swapForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
     const sneakerName = document.getElementById("sneaker-name").value;
     const sneakerSize = document.getElementById("sneaker-size").value;
@@ -48,11 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const wantedSneakers = document.getElementById("wanted-sneakers").value;
     const contactInfo = document.getElementById("contact-info").value;
 
-    // Get the current user's ID
     const user = auth.currentUser;
 
     if (user) {
-      // Create a new swap object
       const newSwap = {
         userId: user.uid,
         offering: {
@@ -62,21 +62,20 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         lookingFor: wantedSneakers,
         contact: contactInfo,
-        timestamp: serverTimestamp(), // Add a timestamp
+        timestamp: serverTimestamp(),
       };
 
-      // Push the new swap data to the 'swaps' node in the database
       push(swapsRef, newSwap)
         .then(() => {
-          console.log("Swap posted successfully!");
-          swapForm.reset(); // Clear the form
+          alert("Swap posted successfully!");
+          swapForm.reset();
         })
         .catch((error) => {
           console.error("Error posting swap:", error);
+          alert("Failed to post swap.");
         });
     } else {
       alert("You need to be logged in to post a swap.");
-      // Optionally redirect to the login page
     }
   });
 });
