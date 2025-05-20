@@ -236,48 +236,131 @@ img {
   padding-top: 20px;
 }
 
-/* Story Section */
 .story-content {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+  flex-direction: column; /* Default to column for mobile */
   align-items: center;
+  gap: 3rem; /* Increased gap for more spacing */
+  padding: 2rem 1rem; /* Added vertical padding */
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 10px; /* Added border-radius for a softer look */
+  text-align: justify;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+}
+
+.story-image-wrapper {
+  width: 100%;
+  display: flex;
   justify-content: center;
 }
 
-.story-content img {
-  flex: 1 1 300px;
+.story-image {
+  max-width: 100%;
+  height: auto;
   border-radius: 12px;
-  width: 500px;
-  height: 650px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+  transition: transform 0.3s ease; /* Smooth transition on hover */
 }
 
-.story-content p {
-  flex: 1 1 300px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #333;
+.story-image:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
 }
 
+.story-text {
+  font-size: 1.15rem; /* Slightly larger font size */
+  line-height: 1.8; /* Improved line height */
+  color: #444; /* Darker text for better contrast */
+  text-align: center;
+  padding: 0 1rem; /* Added horizontal padding for text */
+  text-align: justify;
+}
+
+/* Media query for desktop layout */
+@media (min-width: 768px) {
+  .story-content {
+    flex-direction: row;
+    align-items: stretch; /* **Changed to stretch to fill vertical space** */
+    text-align: justify;
+  }
+
+  .story-image-wrapper {
+    flex: 1;
+    justify-content: flex-start;
+  }
+
+  .story-image {
+    max-width: 500px;
+    height: auto;
+  }
+
+  .story-text {
+    flex: 1;
+    padding-left: 3rem; /* Increased left padding */
+    text-align: left;
+    display: flex; /* Added flexbox for vertical alignment */
+    flex-direction: column;
+    justify-content: center; /* Vertically center text within its container */
+  }
+}
 /* Features */
 .feature-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
   justify-content: center;
+  gap: 4rem;
+  padding: 3rem;
 }
 
 .feature-item {
-  background: #e0e7ff;
-  padding: 2rem;
-  border-radius: 10px;
-  flex: 1 1 250px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 3rem;
+  border-radius: 20px;
+  flex: 1 1 320px;
   text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1); /* Added cubic bezier */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  display: flex; /* Added for vertical alignment of content */
+  flex-direction: column;
+  justify-content: space-between; /* Space out heading and paragraph */
+}
+
+.feature-item:hover {
+  transform: translateY(-15px) scale(1.06); /* Increased scale on hover */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* Even larger shadow on hover */
+  background: rgba(255, 255, 255, 0.95); /* Slightly lighter on hover */
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .feature-item h3 {
-  color: #1e3a8a;
-  margin-bottom: 1rem;
+  color: #2c3e50;
+  margin-bottom: 2.5rem; /* Increased heading margin */
+  font-size: 1.75rem; /* Even larger heading */
+  font-weight: 800; /* Even bolder heading */
+  letter-spacing: -0.03em;
+  text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.05);
+}
+
+.feature-item p {
+  font-size: 1.25rem; /* Slightly larger paragraph */
+  line-height: 2;
+  color: #666; /* Slightly darker text */
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .feature-item {
+    flex-basis: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  .feature-grid {
+    padding: 2rem;
+  }
 }
 
 /* Newsletter */
@@ -326,10 +409,6 @@ footer {
 
 .section-header h2 {
   font-size: 1.75rem;
-}
-
-.story-content {
-  flex-direction: column;
 }
 
 @media (max-width: 480px) {
@@ -755,4 +834,89 @@ footer {
   .swap-cta h3 {
     font-size: 1.5rem;
   }
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto; /* Center the modal vertically and horizontally */
+  padding: 30px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 500px; /* Max width for larger screens */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: center;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-image-container {
+  margin: 20px 0;
+}
+
+.modal-image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.size-selection {
+  margin: 20px 0;
+}
+
+.size-selection label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.size-selection select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+#addToBasketBtn {
+  background-color: #4caf50; /* Green */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
 }

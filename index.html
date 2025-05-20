@@ -27,9 +27,7 @@
           <a href="#features" class="nav-link" data-section="features"
             >Features</a
           >
-          <a href="#newsletter" class="nav-link" data-section="newsletter"
-            >Subscribe</a
-          >
+          <a href="#swap" class="nav-link" data-section="swap">Swap</a>
           <div id="authLinks">
             <span
               id="userDisplay"
@@ -203,7 +201,7 @@
         </div>
         <div class="carousel-container">
           <div id="carouselTrack" class="product-grid">
-            <div class="product-card">
+            <div class="product-card" data-product-id="retro-10">
               <div class="product-image">
                 <img src="Retro 10.jpg" alt="Retro 10" />
                 <div class="product-overlay">
@@ -217,7 +215,7 @@
               </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-product-id="nike-air-max">
               <div class="product-image">
                 <img src="airmax.png" alt="Nike Air Max" />
                 <div class="product-overlay">
@@ -231,7 +229,7 @@
               </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-product-id="nike-air-jordan">
               <div class="product-image">
                 <img src="airjordan.png" alt="Nike Air Jordan" />
                 <div class="product-overlay">
@@ -245,7 +243,7 @@
               </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-product-id="nike-dunk">
               <div class="product-image">
                 <img src="dunk.png" alt="Nike Dunk" />
                 <div class="product-overlay">
@@ -259,7 +257,7 @@
               </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-product-id="adidas-ultraboost">
               <div class="product-image">
                 <img src="ultraboost.png" alt="Adidas Ultraboost" />
                 <div class="product-overlay">
@@ -273,7 +271,7 @@
               </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-product-id="new-balance-550">
               <div class="product-image">
                 <img src="550.jpg" alt="New Balance" />
                 <div class="product-overlay">
@@ -325,16 +323,60 @@
         </div>
 
         <button class="view-all-btn">VIEW ALL</button>
-        <script src="carousel.js"></script>
       </section>
     </div>
+
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3 id="modalProductName"></h3>
+        <p id="modalProductPrice"></p>
+        <div class="modal-image-container">
+          <img id="modalProductImage" src="" alt="Product Image" />
+        </div>
+        <div class="size-selection">
+          <label for="productSize">Select Size:</label>
+          <select id="productSize">
+            <option value="">--Please choose a size--</option>
+            <option value="6">US 6</option>
+            <option value="6.5">US 6.5</option>
+            <option value="7">US 7</option>
+            <option value="7.5">US 7.5</option>
+            <option value="8">US 8</option>
+            <option value="8.5">US 8.5</option>
+            <option value="9">US 9</option>
+            <option value="9.5">US 9.5</option>
+            <option value="10">US 10</option>
+            <option value="10.5">US 10.5</option>
+            <option value="11">US 11</option>
+            <option value="11.5">US 11.5</option>
+            <option value="12">US 12</option>
+          </select>
+        </div>
+        <button id="addToBasketBtn">Add to Basket</button>
+      </div>
+    </div>
+    <!--
+    <div id="cart-container">
+      <h3>Your Cart</h3>
+      <div id="cart-items"></div>
+      <p id="cart-total">Total: $0.00</p>
+      <button>Checkout</button>
+    </div>
+  -->
+    <script src="cart.js"></script>
+    <script src="modal.js"></script>
+    <script src="carousel.js"></script>
+
     <section class="section" id="story">
       <div class="section-header">
         <h2>Our Story</h2>
       </div>
       <div class="story-content">
-        <img src="Story.jpg" alt="Team" />
-        <p>
+        <div class="story-image-wrapper">
+          <img src="Story.jpg" alt="Team" class="story-image" />
+        </div>
+        <p class="story-text">
           At Just Kicks, we believe shoes are more than just something you wear
           — they tell a story. What started as a small dream in a local garage
           quickly turned into a movement for sneaker lovers, by sneaker lovers.
